@@ -1,12 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CommentSection from '@/components/CommentSection';
-import { WhatsAppModal } from "@/components/WhatsAppModal";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const Contactanos = () => {
-  return <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-background">
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xkgzdelo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-background">
       <Header />
       
       <main className="flex-grow">
@@ -15,29 +57,72 @@ const Contactanos = () => {
             <h1 className="text-3xl font-bold mb-6">Contáctanos</h1>
             
             <div className="bg-white dark:bg-card rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold mb-4">Información de contacto</h2>
+              <h2 className="text-xl font-bold mb-4">Formulario de contacto</h2>
               
-              <div className="space-y-3">
-                <div className="flex items-center gap-4">
-                  <span className="font-bold">Mi tel.: </span>
-                  <WhatsAppModal />
+              {isSubmitted ? (
+                <div className="p-4 bg-green-100 text-green-800 rounded-md">
+                  ¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.
                 </div>
-                
-                <div className="flex items-start gap-2">
-                  <span className="font-bold">Formulario de contacto</span>
-                  <a href="https://eu.jotform.com/build/251222460195349" target="_blank" rel="noopener noreferrer">
-                    <Button style={{ backgroundColor: '#22c55e', color: 'white' }}>Formulario de contacto</Button>
-                  </a>
-                </div>
-                
-                <p className="mt-4">
-                  Si deseas consultarme cualquier duda o cuestión puedes usar el formulario arriba indicado.
-                </p>
-                
-                <p className="mt-2">
-                  Igualmente utiliza uno de estos dos métodos para solicitarme la clave para entrar en la sección de «esclavas VIPs»
-                </p>
-              </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-1">
+                      Nombre
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-1">
+                      Correo electrónico
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-1">
+                      Mensaje
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={6}
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto bg-primary hover:bg-primary/90"
+                  >
+                    {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
+                  </Button>
+                </form>
+              )}
+              
+              <p className="mt-6 text-sm text-gray-600 dark:text-gray-400">
+                Si deseas consultarme cualquier duda o cuestión, completa el formulario y me pondré en contacto contigo a la mayor brevedad posible.
+              </p>
             </div>
             
             <CommentSection pageId="contactanos" />
@@ -46,7 +131,8 @@ const Contactanos = () => {
       </main>
       
       <Footer />
-    </div>;
+    </div>
+  );
 };
 
 export default Contactanos;
