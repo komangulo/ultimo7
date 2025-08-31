@@ -1,12 +1,28 @@
 {
   "rewrites": [
-    {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
-    },
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "redirects": [
+    { "source": "/inicio", "destination": "/", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+
+    { "source": "/contacto", "destination": "/contactame", "permanent": true },
+    { "source": "/esclava-busca-amo", "destination": "/esclava-buscan-amo", "permanent": true },
+    { "source": "/esclavas-vip", "destination": "/esclavas-vips", "permanent": true },
+    { "source": "/sumision", "destination": "/sumision-online", "permanent": true }
+  ],
+  "trailingSlash": false,
+  "headers": [
     {
       "source": "/(.*)",
-      "destination": "/"
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
     }
   ]
 }
