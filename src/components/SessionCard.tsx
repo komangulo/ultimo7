@@ -25,7 +25,7 @@ const SessionCard = ({
       <div className="p-4">
         <h3 className="text-lg font-semibold mb-2">{title}</h3>
         <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
-        <Link to="/contactanos">
+        <Link to="/contactame">
           <Button className="w-full">Solicitar Sesión</Button>
         </Link>
       </div>

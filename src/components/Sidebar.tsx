@@ -30,7 +30,7 @@ const Sidebar = () => {
         </div>
         
         <div className="mt-4">
-          <Link to="/contactanos">
+          <Link to="/contactame">
             <Button className="w-full bg-primary hover:bg-primary/90">Sométete a mi</Button>
           </Link>
         </div>

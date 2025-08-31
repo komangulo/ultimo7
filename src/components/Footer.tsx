@@ -10,9 +10,9 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4" />
-              <a href="https://eu.jotform.com/build/251222460195349" target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary" size="sm">Formulario de contacto</Button>
-              </a>
+              <Link to="/contactame">
+                <Button variant="secondary" size="sm">Contacto</Button>
+              </Link>
             </div>
           </div>
         </div>
