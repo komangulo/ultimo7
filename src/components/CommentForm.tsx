@@ -1,7 +1,11 @@
 
 import React, { useState } from 'react';
 
-const CommentForm: React.FC = () => {
+interface CommentFormProps {
+  pageId: string;
+}
+
+const CommentForm: React.FC<CommentFormProps> = ({ pageId }) => {
   const [author, setAuthor] = useState('');
   const [age, setAge] = useState('');
   const [city, setCity] = useState('');

@@ -4,13 +4,13 @@ import SessionCard from './SessionCard';
 const sessions = [
   {
     id: 1,
-    title: "Asiste a una de mis sesiones",
+    title: "Asiste a una de mis sesiones como sumisa en Madrid",
     imageSrc: "/images/rope-art-1.jpg",
     description: "Puedes elegir de mis sesiones una que se adapte a tus necesidades. Aunque te vas a someter, debes tener claro qué quieres experimentar en la sesión. Todas las primeras visitas son ligeras."
   },
   {
     id: 2,
-    title: "El Macho Inquietador",
+    title: "Ser Dominante Amo en Madrid",
     imageSrc: "/images/chain-portrait.jpg",
     description: "Llevo años en el mundo del dominio y es una de las experiencias que más placer me proporcionan. Sentir ese poder creciendo en mi, ese dominio absoluto, ver cómo ellas disfrutan, son sensaciones incomparables."
   },
@@ -22,13 +22,13 @@ const sessions = [
   },
   {
     id: 4,
-    title: "Vídeos de sesiones",
+    title: "Vídeos de sesiones de esclavas y sumisas",
     imageSrc: "/images/cupping-art.jpg",
     description: "Aquí podrás ver los vídeos más destacados de mi trabajo. Son totalmente reales, no preparados ni con actrices. Contacta a través del e-mail o WhatsApp para entrar a ver los vídeos."
   },
   {
     id: 5,
-    title: "Imágenes de sesiones con esclavas",
+    title: "Imágenes de sesiones con esclavas y sumisas",
     imageSrc: "/images/suspension-art.jpg",
     description: "Aquí verás como trato a las sumisas, cómo juego con sus cuerpos, cuando las castigo, cómo logro que se entreguen por completo, diciendo sí a mi palabra sapiente directora, soy yo."
   },

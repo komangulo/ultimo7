@@ -10,8 +10,8 @@ const Hero = () => {
       <div className="absolute inset-0 overlay-gradient z-10"></div>
       <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center">
         <div className="max-w-xl text-white">
-          <div className="inline-block bg-primary px-3 py-1 mb-4">PRESENTACIÓN</div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-shadow">Presentación</h1>
+          <div className="inline-block bg-primary px-3 py-1 mb-4">AMO DOMINANTE MADRID</div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-shadow">Amo Dominante Madrid</h1>
           <p className="text-lg mb-6 whitespace-pre-line">
             Dominante y Amo de 36 años con más de 14 años de experiencia real en el mundo del BDSM, explorando múltiples dinámicas D/s, desde la obediencia más sutil hasta la entrega más intensa.
 
